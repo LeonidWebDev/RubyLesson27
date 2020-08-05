@@ -1,12 +1,11 @@
-<h2>Записаться</h2>
-
+ <h2>Записаться</h2>
 
 <form action="/visit_form" method="POST">
   <label for="masterSelect1">Выберите мастера</label>
   <select class="form-control mybg" name="master" id="masterSelect1">
-    <option <%= @master == "Whalter White" ? "selected" : "" %>><%= is_set_masters? %></option>
-    <option <%= @master == "Jessi Pinkman" ? "selected" : "" %>>Jessi Pinkman</option>
-    <option <%= @master == "Gus Fring" ? "selected" : "" %>>Gus Fring</option>
+  <% @barbers.each do |row| %>
+    <option <%= @master == row ? "selected" : "" %>><%= row %></option>
+  <% end %>
   </select>
   <div class="form-group">
     <label for="exampleInputEmail1">Ваше имя</label>

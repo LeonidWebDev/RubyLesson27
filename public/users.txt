@@ -17,3 +17,4 @@ Master: Whalter White, User: jessie, Phone: 233214, Time: 1305, Color: #7bd148
 Master: Whalter White, User: weaeaeaw, Phone: 233214, Time: 1305, Color: #7bd148
 Master: Jessi Pinkman, User: weaeaeaw, Phone: 666777, Time: 18-00, Color: #dc2127
 Master: Jessi Pinkman, User: jessie, Phone: 28728727872, Time: 18-00, Color: #dc2127
+Master: Gus Fring, User: john smith, Phone: 233214, Time: 22 03 20, Color: #ffb878

@@ -24,8 +24,11 @@ def is_set_masters?
   end
 end
 
-configure do
+before do  # run before every method (befor configure, before get, before post)
   @barbers = ["Whalter White", "Jessi Pinkman", "Gus Fring"]
+end
+
+configure do
   db = get_db
   db.execute 'CREATE TABLE IF NOT EXISTS
    "Users" 
@@ -90,22 +93,11 @@ get '/contacts' do
   erb :contacts
 end
 
-# row  is array here(in Database)
-def readDB
-  @clientData = ""
-  db = SQLite3::Database.new "barbershop.db"
-  db.results_as_hash = true
-  db.execute 'select * from Users order by id desc' do |row| 
-    print row['username']
-    print "\t-\t"
-    puts row['datestamp']
-    puts "-----------------"
-    @clientData = @clientData.to_s + row.to_s
-  end
-  return @clientData
-end
-
 get '/showusers' do
+  db = get_db
+  db.results_as_hash = true
+  @results = db.execute 'select * from Users order by id desc'
+
   erb :showusers
 end
 
@@ -139,7 +131,7 @@ post '/visit_form' do
   db.execute "insert into Users (username, phone, datestamp, master, color)
    values (?, ?, ?, ?, ?)", [@clientname, @userphone, @userdate, @master, @color]
 
-  return erb "oki doki"
+  return erb "<h2>Спасибо, Вы записались</h2>"
 
 end  
 
